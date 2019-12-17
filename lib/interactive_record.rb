@@ -3,4 +3,8 @@ require 'active_support/inflector'
 
 class InteractiveRecord
   
+  self.table_name
+    self.to
+  end
+  
 end
