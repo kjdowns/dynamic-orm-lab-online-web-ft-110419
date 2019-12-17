@@ -32,6 +32,7 @@ class InteractiveRecord
       VALUES (?) 
     SQL
     DB[:conn].execute(sql, [values_for_insert])
+    @id = DB[:conn].execute("SELECT last_insert_rowid()")
   end
   
   def self.table_name
