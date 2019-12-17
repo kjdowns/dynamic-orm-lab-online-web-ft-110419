@@ -3,6 +3,12 @@ require 'active_support/inflector'
 
 class InteractiveRecord
   
+  def initialize(attributes)
+    sql = <<-SQL
+      INSERT INTO '#{table_name}'
+    SQL
+  end
+  
   def self.table_name
     self.to_s.downcase.pluralize
   end
