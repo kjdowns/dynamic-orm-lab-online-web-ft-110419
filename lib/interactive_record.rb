@@ -30,7 +30,6 @@ class InteractiveRecord
     DB[:conn].execute(sql)
     @id = DB[:conn].execute("SELECT last_insert_rowid() FROM #{table_name_for_insert}")[0][0]
   end
-
   
   def self.table_name
     self.to_s.downcase.pluralize
@@ -48,4 +47,15 @@ class InteractiveRecord
     column_names.compact
   end
   
+  def self.find_by_name(name)
+    DB[:conn].execute("SELECT * FROM #{table_name} WHERE name = ?", name)
+  end
+  
 end
+
+
+
+
+
+
+
