@@ -25,6 +25,13 @@ class InteractiveRecord
     values.join(", ")
   end
   
+  def save
+    sql = <<-SQL
+      INSERT INTO '#{table_name_for_insert}'
+      
+    SQL
+  end
+  
   def self.table_name
     self.to_s.downcase.pluralize
   end
