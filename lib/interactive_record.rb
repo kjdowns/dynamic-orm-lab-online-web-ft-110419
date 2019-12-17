@@ -3,10 +3,10 @@ require 'active_support/inflector'
 
 class InteractiveRecord
   
-  def initialize(attributes)
-    sql = <<-SQL
-      INSERT INTO '#{table_name}'
-    SQL
+  def initialize(attributes={})
+    attributes.each do |attribute, value|
+      self.send("#{attribute}=",value)
+    end
   end
   
   def self.table_name
