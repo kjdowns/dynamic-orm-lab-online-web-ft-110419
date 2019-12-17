@@ -52,9 +52,10 @@ class InteractiveRecord
     DB[:conn].execute("SELECT * FROM #{table_name} WHERE name = ?", name)
   end
   
-  def self.find_by() 
-    binding.pry
-    DB[:conn].execute("SELECT * FROM #{table_name} WHERE #{options.keys.join} = #{options.values.join}")
+  def self.find_by(hash) 
+    hash.each do |key, value|
+      DB[:conn].execute("SELECT * FROM #{table_name} WHERE #{key.to_s} = #{value}")
+    end
   end
   
 end
